@@ -1,0 +1,9 @@
+﻿{
+  "profiles": {
+    "MedvetitleBot.Gateway": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7253",
+      "launchBrowser": false
+    }
+  }
+}
