@@ -48,6 +48,8 @@ namespace MedvetitleBot.Gateway.Repositories
         public async Task<long> UpsertChat(Chat chat)
         {
             var model = _mapper.Map<ChatEntity>(chat);
+            model.PartitionKey = _options.DefaultPartitionKey;
+            model.RowKey = chat.Id.ToString();
             await _chats.UpsertEntityAsync(model);
             return model.Id;
         }

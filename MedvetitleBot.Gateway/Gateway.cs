@@ -36,14 +36,21 @@ namespace MedvetitleBot.Gateway
             string messageString = tgUpdate.ToJson();
             log.LogInformation($"Update received: {messageString}");
 
+
             switch (tgUpdate.Type)
             {
                 case UpdateType.Message:
+                    if (tgUpdate.Message.Chat.Type == ChatType.Private ||
+                        tgUpdate.Message.Chat.Type == ChatType.Sender ||
+                        tgUpdate.Message.MigrateToChatId.HasValue)
+                        break;
                     if (tgUpdate.Message.MigrateFromChatId.HasValue)
                         await _storageRepository.DeleteChat(tgUpdate.Message.MigrateFromChatId.Value);
                     await _storageRepository.UpsertChat(_mapper.Map<VM.Chat>(tgUpdate.Message.Chat));
                     break;
                 case UpdateType.EditedMessage:
+                    if (tgUpdate.Message.Chat.Type == ChatType.Private || tgUpdate.Message.Chat.Type == ChatType.Sender)
+                        break;
                     await _storageRepository.UpsertChat(_mapper.Map<VM.Chat>(tgUpdate.EditedMessage.Chat));
                     break;
                 case UpdateType.MyChatMember:
