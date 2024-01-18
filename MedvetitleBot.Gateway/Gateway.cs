@@ -49,7 +49,7 @@ namespace MedvetitleBot.Gateway
                     await _storageRepository.UpsertChat(_mapper.Map<VM.Chat>(tgUpdate.Message.Chat));
                     break;
                 case UpdateType.EditedMessage:
-                    if (tgUpdate.Message.Chat.Type == ChatType.Private || tgUpdate.Message.Chat.Type == ChatType.Sender)
+                    if (tgUpdate.EditedMessage.Chat.Type == ChatType.Private || tgUpdate.EditedMessage.Chat.Type == ChatType.Sender)
                         break;
                     await _storageRepository.UpsertChat(_mapper.Map<VM.Chat>(tgUpdate.EditedMessage.Chat));
                     break;
