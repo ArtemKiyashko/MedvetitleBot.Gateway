@@ -12,7 +12,8 @@
             }
         },
         "logLevel": {
-            "MedvetitleBot.Gateway.Gateway": "Information"
+            "MedvetitleBot.Gateway.Gateway": "Information",
+            "MedvetitleBot.Gateway.Managers.TelegramBotProxy": "Information"
         }
     }
 }

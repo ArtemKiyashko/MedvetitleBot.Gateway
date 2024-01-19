@@ -20,6 +20,7 @@
     <None Remove="Interfaces\" />
     <None Remove="Repositories\" />
     <None Remove="Extensions\" />
+    <None Remove="Managers\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
@@ -38,5 +39,6 @@
     <Folder Include="Interfaces\" />
     <Folder Include="Repositories\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Managers\" />
   </ItemGroup>
 </Project>
